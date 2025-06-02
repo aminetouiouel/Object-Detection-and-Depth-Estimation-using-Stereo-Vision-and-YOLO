@@ -323,4 +323,4 @@ If you're interested in learning more about stereo vision, here are some useful 
   
 ## Credits
 
-This project was created by [Mohamed Amine Touiouel](https://github.com/aminetouiouel) and [Bilal Marghich](https://github.com/BlueBerry1589).
+This project was created by [Mohamed Amine Touiouel](https://github.com/aminetouiouel)  and [Bilal Marghich](https://github.com/BlueBerry1589).
