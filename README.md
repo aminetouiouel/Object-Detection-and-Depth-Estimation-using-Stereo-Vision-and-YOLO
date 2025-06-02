@@ -61,7 +61,7 @@ Once calibration is done, each stereo image pair passes through the following pi
 
 This pipeline enables the system to transform raw stereo images into a 3D scene understanding with object categories and distances.
 
-![image](https://github.com/user-attachments/assets/4a18c6ed-d31d-49d9-a23d-7cf4d889d2c3)
+![image](images/proj_pipeline.png)
 
 
 ---
@@ -83,7 +83,7 @@ This pipeline enables the system to transform raw stereo images into a 3D scene 
 -we used matlab for the calibration part of course there are several other methods to do that like python and opencv (a gentleman did a good job at explaining that, here a [link](https://github.com/TemugeB/python_stereo_camera_calibrate?tab=readme-ov-file) to his work),you can also use camera calibration tool with Ros .The official documentation [link](http://wiki.ros.org/camera_calibration/Tutorials/StereoCalibration).
 - 8x6 corner checkerboard, the default cell size is 30mm.
   
-![mac_calib_pattern](https://github.com/user-attachments/assets/86fa487a-969a-4a49-8a94-7f2e8788832a)
+![mac_calib_pattern](![image](images/pattern.png)
 [pattern.pdf](https://github.com/user-attachments/files/19577050/pattern.pdf)
 
  You can print this board to A4 paper in the size of "1:1".
@@ -105,7 +105,7 @@ After Rectification: The epipolar lines are perfectly horizontal, and any corres
 
 
   <p align="center">
-  <img src="https://github.com/user-attachments/assets/757397c7-a4f1-4fb2-ab78-40b907565f0e" width="500" height="500" />
+  <img src="images/rect.png" width="500" height="500" />
 </p>
 In this project, rectification is performed using uncalibrated stereo vision techniques:
 
@@ -177,7 +177,7 @@ Once the system is running, several output windows will appear to visualize the 
 - **Original Left Image with Distance**  
   Displays the original left image with YOLOv8 object detections and estimated distances (in meters) overlaid for each detected object.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b1865c7b-4af4-4c70-a1ba-d830279ddd64" width="300" height="300" />
+  <img src="images/result.png" width="300" height="300" />
 </p>
 
 
@@ -185,14 +185,14 @@ Once the system is running, several output windows will appear to visualize the 
 - **Rectified Left Image**  
   Shows the rectified version of the left stereo image to confirm alignment.
   <p align="center">
-  <img src="https://github.com/user-attachments/assets/e7031caa-8f03-4bc6-bc62-3831316eea2d" width="300" height="300" />
+  <img src="images/rect_right.png" width="300" height="300" />
 </p>
 
 
 - **Rectified Right Image**  
   Displays the rectified right image.
   <p align="center">
-  <img src="https://github.com/user-attachments/assets/c5e257a6-c41d-4985-b7cc-d8ba437ef29a" width="300" height="300" />
+  <img src="images/rect_left.png" width="300" height="300" />
 </p>
   
 
@@ -200,14 +200,14 @@ Once the system is running, several output windows will appear to visualize the 
 - **Disparity Map**  
   A grayscale image visualizing pixel disparities. Brighter areas indicate closer objects.
     <p align="center">
-  <img src="https://github.com/user-attachments/assets/a6bc0b5a-31f1-4270-97d1-7c920ddbc88b" width="300" height="300" />
+  <img src="images/disparity.png" width="300" height="300" />
 </p>
 
 
 - **Depth Map**  
   Visualizes the calculated depth (inverse of disparity), normalized for better interpretation.
       <p align="center">
-  <img src="https://github.com/user-attachments/assets/8fc8d81d-0e55-4b0e-b04e-6d79fb3ea483" width="300" height="300" />
+  <img src="images/depth.png" width="300" height="300" />
 </p>
 
 
