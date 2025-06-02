@@ -70,11 +70,50 @@ This pipeline enables the system to transform raw stereo images into a 3D scene 
 
 ## **1. Camera Calibration**
 
+- **Purpose**: Camera calibration helps in determining the intrinsic and extrinsic parameters of the cameras, ensuring correct interpretation of the images.
+  
+- **Process**:
+  
+  - Use a **chessboard pattern** to capture multiple images and calculate the camera’s intrinsic and extrinsic parameters.
+  - The intrinsic parameters include the **focal length**, **principal point**, and **distortion coefficients**.
+  - The extrinsic parameters define the **relative position** and **orientation** between the two stereo cameras.
+  - Calibration can be done using **OpenCV** tools to get the necessary parameters for rectification and disparity calculation.
+-**implementation**
+
+-we used matlab for the calibration part of course there are several other methods to do that like python and opencv (a gentleman did a good job at explaining that, here a [link](https://github.com/TemugeB/python_stereo_camera_calibrate?tab=readme-ov-file) to his work),you can also use camera calibration tool with Ros .The official documentation [link](http://wiki.ros.org/camera_calibration/Tutorials/StereoCalibration).
+- 8x6 corner checkerboard, the default cell size is 30mm.
+  
+![mac_calib_pattern](https://github.com/user-attachments/assets/86fa487a-969a-4a49-8a94-7f2e8788832a)
+[pattern.pdf](https://github.com/user-attachments/files/19577050/pattern.pdf)
+
+ You can print this board to A4 paper in the size of "1:1".
+
+for our case  we use the 15-inch MacBook Pro screen as the calibration board, for in the Mac OS Preview tool,
+ you can choose actual size to display PDFs. This allows the checkerboard cell size to render an exact 30mm
+ and screen display also ensures absolute flatness of the calibration board.
+ 
+If you're using a 15-inch MacBook Pro，Please use the "mac_calib_pattern. png" screen  and
+ click "Actual Size."
  
 
   
 ## **2. Image Rectification**
 
+In stereo vision, image rectification is the process of transforming a pair of stereo images so that the epipolar lines (i.e., lines along which matching points must lie) become horizontal and aligned. This simplifies the correspondence search for disparity computation: instead of scanning in 2D, the algorithm only needs to look along a single row (1D search), making the process faster and more robust.
+Before Rectification: Matching points between left and right images lie along epipolar lines which can be slanted or curved, depending on the relative pose of the cameras.
+After Rectification: The epipolar lines are perfectly horizontal, and any corresponding point in the left image lies on the same row in the right image.
+
+
+  <p align="center">
+  <img src="https://github.com/user-attachments/assets/757397c7-a4f1-4fb2-ab78-40b907565f0e" width="500" height="500" />
+</p>
+In this project, rectification is performed using uncalibrated stereo vision techniques:
+
+  . SIFT is used to extract and match keypoints between left and right images.
+
+  . The fundamental matrix is estimated via RANSAC to capture epipolar geometry.
+
+  . Rectifying homographies are computed using cv2.stereoRectifyUncalibrated and applied with warpPerspective to align the views.
 
 ## **3. Cost Computation**
  
