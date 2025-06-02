@@ -266,7 +266,7 @@ StereoVisionProject/
 
 4. Run the project:
     ```bash
-    python src/main.py
+    python3 main.py
     ```
 
 
